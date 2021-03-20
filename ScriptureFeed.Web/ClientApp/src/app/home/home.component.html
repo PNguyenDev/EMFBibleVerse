@@ -1,0 +1,61 @@
+<h1>Welcome to Scripture Feed!</h1>
+<h2 id="favoriteTableLabel" *ngIf="showFavoriteVerses()">Saved Favorite Verses</h2>
+<table class='table table-striped' aria-labelledby="favoriteTableLabel" *ngIf="showFavoriteVerses()">
+  <thead>
+    <tr>
+      <th>Verse</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let verse of favoriteVerses">
+      <td>
+        {{ verse.verseText }}
+        <br />
+        <br />
+        {{ verse.getCitationInfo }}
+      </td>
+      <td><img src="{{ verse.imageLink }}" /></td>
+      <td>
+        <button (click)="saveFavoriteVerse(verse, !verse.isFavorite)"> {{ verse.isFavorite ? 'Unfavorite' : 'Favorite' }}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<span>
+  <input type="date" [formControl]="startDate">
+</span>
+<span class="ml-2">
+  <label for="pageSize">Page Size:</label> <input type="text" id="pageSize" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" [formControl]="pageSize">
+</span>
+<br />
+<span>
+  <button (click)="getBibleVerses()">Get Verses</button>
+</span>
+<br />
+<h2 id="favoriteTableLabel" *ngIf="showGetVerses()">Found Verses</h2>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="showGetVerses()">
+  <thead>
+    <tr>
+      <th>Verse</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let verse of verses">
+      <td>
+        {{ verse.verseText }}
+        <br />
+        <br />
+        {{ verse.getCitationInfo }}
+      </td>
+      <td><img src="{{ verse.imageLink }}" /></td>
+      <td>
+        <button (click)="saveFavoriteVerse(verse, !verse.isFavorite)"> {{ verse.isFavorite ? 'Unfavorite' : 'Favorite' }}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

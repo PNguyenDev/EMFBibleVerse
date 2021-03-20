@@ -1,0 +1,1 @@
+Everything is handled in memory, so you should be able to start debugging in Visual Studio and everything should set up fine.
